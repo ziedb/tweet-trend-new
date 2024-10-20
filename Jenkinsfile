@@ -10,8 +10,9 @@ environment{
     stages {
         stage("buid"){
             steps{
-
-                sh 'mvn clean deploy'
+                echo "------------ build started ---------"
+                sh 'mvn clean deploy -Dmaven.test.skip=true'
+                echo "------------ build completed ---------"
             }
         }
 
@@ -20,8 +21,10 @@ environment{
             scannerHome = tool 'sonar-scanner'
         }
         steps{
+            echo '<--------------- Sonar Analysis started  --------------->'
             withSOnarQubeEnv('sonarqube-server') {
                 sh '${scannerHome}/bin/sonar-scanner'
+            echo '<--------------- Sonar Analysis stopped  --------------->'
             }
         }    
         }
