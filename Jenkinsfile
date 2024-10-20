@@ -23,7 +23,6 @@ environment{
             withSOnarQubeEnv('sonarqube-server') {
                 sh '${scannerHome}/bin/sonar-scanner'
             }
-
         }    
         }
     }
