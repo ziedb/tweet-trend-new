@@ -22,7 +22,7 @@ environment{
         }
         steps{
             echo '<--------------- Sonar Analysis started  --------------->'
-            withSOnarQubeEnv('sonarqube-server') {
+            withSonarQubeEnv('sonarqube-server') {
                 sh '${scannerHome}/bin/sonar-scanner'
             echo '<--------------- Sonar Analysis stopped  --------------->'
             }
