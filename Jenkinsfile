@@ -37,6 +37,7 @@ environment{
         }
         stage("Quality Gate"){
             steps{
+                echo '<--------------- Sonar Quality Gate Analysis started  --------------->'
                 script{
                         timeout(time: 1, unit: 'HOURS') { // Just in case something goes wrong, pipeline will be killed after a timeout
                         def qg = waitForQualityGate() // Reuse taskId previously collected by withSonarQubeEnv
@@ -45,7 +46,7 @@ environment{
                         }
                         }
                     }
-                
+                echo '<--------------- Sonar Quality Gate Analysis stopped  --------------->'
             }
         }
 
